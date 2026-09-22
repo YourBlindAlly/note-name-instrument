@@ -98,6 +98,23 @@ for any purpose at no fee. Not a concern now since the project moved to
 Rusty's own voice, but documented here in case a second/backup voice is
 ever wanted.
 
+Design of the echo/"Simon" game, now built as "Simon Plays," a second mode
+in the same app rather than a separate one: the app sings a sequence of
+notes (starting at one note), the player echoes it back on their keyboard,
+and a correct answer grows the sequence by one note and repeats, the usual
+Simon pattern. Drills pitch-to-key specifically: the prompt is only the
+sung pitch, not a name shown or spoken outside the song itself, and the
+player's job is to find that pitch on the keyboard; free play (holding a
+key to hear its name) remains the way to learn name-to-key. Notes are drawn
+from the full recorded range (currently F sharp 2 to C4) with equal
+probability, skipping an immediate repeat of the previous note so two sung
+copies of the same pitch in a row aren't mistaken for one held note. A miss
+does not end the game or shrink the sequence: it says "Not quite, listen
+again," replays the same sequence unchanged, and waits for another attempt,
+since the point is learning, not elimination. Timing (currently a note held
+650ms with a 500ms gap before the next) is a first guess, not yet confirmed
+by ear; see "still open" below.
+
 ## Still open
 
 Middle and high register recordings. The only sample pack so far (see
@@ -135,6 +152,7 @@ Whether note durations should ever be sung (as opposed to shown as text)
 in the MusicXML reading mode. Current answer is text only, spoken/shown,
 not sung. Worth revisiting once that mode is actually built.
 
-Design of the echo/"Simon" game: how many notes to start with, how to
-grow the sequence, whether to drill name-to-key, pitch-to-key, or both,
-and what happens on a miss. Discussed only at a concept level so far.
+Whether a repeat sequence should ever be capped, and whether the session's
+longest sequence should be remembered across a reload rather than only for
+that session. Not addressed in Simon Plays version one (see "Settled"):
+no cap, and the best-so-far stat resets on reload.

@@ -22,6 +22,24 @@
       <p>Playing area. Last note played: <span id="now-playing" aria-live="off">none yet</span></p>
     </div>
 
+    <h2>Mode</h2>
+    <fieldset>
+      <legend>Mode</legend>
+      <label><input type="radio" name="mode" id="mode-instrument" checked> Free play</label>
+      <label><input type="radio" name="mode" id="mode-simon"> Simon Plays</label>
+    </fieldset>
+
+    <section id="simon-panel" hidden>
+      <h2>Simon Plays</h2>
+      <p>The app sings a short series of notes. Listen, then play them back in the same order. Get it right and the series grows by one note.</p>
+      <p>
+        <button id="simon-new-game" type="button">New game</button>
+        <button id="simon-replay" type="button">Replay sequence</button>
+      </p>
+      <p id="simon-status" role="status" aria-live="polite">Press New game to start.</p>
+      <p>Longest sequence so far this session: <span id="simon-best">0</span></p>
+    </section>
+
     <h2>Settings</h2>
     <fieldset>
       <legend>Black key spelling</legend>

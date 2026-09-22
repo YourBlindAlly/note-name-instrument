@@ -5,8 +5,9 @@ app sings that note's letter name, in a recorded human voice, at the note's own
 pitch, for as long as the key is held. The point is to tie together a note's
 name, its pitch, and the physical act of playing it.
 
-A second mode, working title "Simon Plays" (the app plays a short series of
-sung notes and the player repeats them), is planned but not built yet.
+A second mode, "Simon Plays," is also here: the app sings a short, growing
+series of notes and the player echoes it back on their keyboard. Switch modes
+with the Free play / Simon Plays radio buttons after pressing Start.
 
 ## Running it
 
@@ -29,7 +30,9 @@ W E T Y U O P are black keys, Z and X change octave.
     js/sampleBank.js            loads and decodes a sample pack
     js/voice.js                 monophonic sung-note playback (attack, loop, release)
     js/input.js                 Web MIDI input and computer keyboard fallback
-    js/main.js                  wiring, settings, screen reader status messages
+    js/simon.js                 Simon Plays rules: note choice, sequence growth, judging (no browser APIs)
+    js/simonMode.js             Simon Plays round orchestration: timing, narration, sound
+    js/main.js                  wiring, settings, mode switching, screen reader status messages
     samples/low_voice/          Rusty's recorded sample pack, F sharp 2 to C4
     docs/                       spec, decision log, sample pack format, how the pack was made
     tools/cutpack.py            script used to cut a raw recording into a pack (see docs)
@@ -46,5 +49,11 @@ W E T Y U O P are black keys, Z and X change octave.
 - Status messages go to a polite live region. Each note's name is not announced
   by the screen reader by default, since it would talk over the sung name; there
   is a checkbox to turn that on.
+- Simon Plays starts at one note and grows by one on a correct answer. A wrong
+  answer doesn't end the game; it replays the same sequence and tries again.
+  Notes are drawn from the recorded range only, never a beeped out-of-range
+  note. It has its own status region so game narration doesn't mix with device
+  messages. The note pacing (a hold and a gap between notes) is a first guess,
+  not yet confirmed by ear.
 
 See docs/SPEC.md and docs/DECISIONS.md for the full reasoning.
