@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { sampleKey, spokenName, keyToMidi, resolvePlayback, midiToHz, isBlackKey } from "../js/notes.js";
+import { sampleKey, spokenName, pitchClassName, keyToMidi, resolvePlayback, midiToHz, isBlackKey } from "../js/notes.js";
 
 const range = { minMidi: 42, maxMidi: 60 }; // F sharp 2 to C4
 
@@ -23,6 +23,13 @@ test("spoken names", () => {
   assert.equal(spokenName(66, false), "F sharp 4");
   assert.equal(spokenName(63, true), "E flat 4");
   assert.equal(spokenName(60, false), "C 4");
+});
+
+test("pitch class names have no octave", () => {
+  assert.equal(pitchClassName(0, false), "C");
+  assert.equal(pitchClassName(6, false), "F sharp");
+  assert.equal(pitchClassName(6, true), "G flat");
+  assert.equal(pitchClassName(11, false), "B");
 });
 
 test("black keys", () => {

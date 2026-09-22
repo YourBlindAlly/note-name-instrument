@@ -32,6 +32,17 @@
     <section id="simon-panel" hidden>
       <h2>Simon Plays</h2>
       <p>The app sings a short series of notes. Listen, then play them back in the same order. Get it right and the series grows by one note.</p>
+
+      <fieldset>
+        <legend>Note pool</legend>
+        <label><input type="radio" name="simon-pool" id="pool-chromatic" checked> Chromatic, every recorded note</label>
+        <label><input type="radio" name="simon-pool" id="pool-black-keys"> Black keys only</label>
+        <label>
+          <input type="radio" name="simon-pool" id="pool-key"> A specific key:
+          <select id="simon-key-tonic" disabled aria-label="Key"></select> major
+        </label>
+      </fieldset>
+
       <p>
         <button id="simon-new-game" type="button">New game</button>
         <button id="simon-replay" type="button">Replay sequence</button>

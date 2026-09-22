@@ -34,6 +34,15 @@ export function spokenName(midi, useFlats) {
   return `${name[0]}${accidental ? " " + accidental : ""} ${octaveOf(midi)}`;
 }
 
+// Same as spokenName but for a pitch class alone, no octave, e.g. "F sharp".
+// Used to label a key (as in musical key, not keyboard key) by its tonic.
+export function pitchClassName(pc, useFlats) {
+  const names = useFlats ? FLAT_NAMES : SHARP_NAMES;
+  const name = names[pc];
+  const accidental = name.slice(1);
+  return `${name[0]}${accidental ? " " + accidental : ""}`;
+}
+
 // Inverse of sampleKey: "Gflat2" -> 42.
 export function keyToMidi(key) {
   const match = /^([A-G])(sharp|flat)?(-?\d+)$/.exec(key);

@@ -3,6 +3,34 @@
 // this can be tested with plain Node. See docs/DECISIONS.md, "Design of the
 // echo/Simon game" for the choices made here and why.
 
+import { isBlackKey, pitchClass } from "./notes.js";
+
+// Semitone steps of a major scale above its tonic. Simon Plays' "key mode"
+// is major only for now; minor or other modes are a later addition.
+export const MAJOR_SCALE_STEPS = [0, 2, 4, 5, 7, 9, 11];
+
+// The candidate notes for a round, given the recorded range and which of
+// Simon Plays' three note pools is selected:
+//   "chromatic": every recorded note (the original, only mode).
+//   "blackKeys": only the black keys in range.
+//   "key": only the notes of a major scale in range, given a tonic pitch
+//          class 0-11 (options.tonicPitchClass).
+export function buildPool(range, kind, options = {}) {
+  const all = [];
+  for (let midi = range.minMidi; midi <= range.maxMidi; midi++) all.push(midi);
+  if (kind === "chromatic") return all;
+  if (kind === "blackKeys") return all.filter(isBlackKey);
+  if (kind === "key") {
+    const { tonicPitchClass } = options;
+    if (!Number.isInteger(tonicPitchClass) || tonicPitchClass < 0 || tonicPitchClass > 11) {
+      throw new Error(`tonicPitchClass must be 0-11, got ${tonicPitchClass}`);
+    }
+    const scalePitchClasses = new Set(MAJOR_SCALE_STEPS.map((step) => (tonicPitchClass + step) % 12));
+    return all.filter((midi) => scalePitchClasses.has(pitchClass(midi)));
+  }
+  throw new Error(`Unknown pool kind: ${kind}`);
+}
+
 export function pickRandomNote(pool, rng = Math.random) {
   if (pool.length === 0) throw new Error("Empty note pool");
   return pool[Math.floor(rng() * pool.length)];

@@ -17,8 +17,9 @@ const DEFAULT_GAP_MS = 500;
 const PAUSE_MS = 1300;
 
 export class SimonMode {
-  constructor({ pool, soundOn, soundOff, announce, onUpdate, holdMs = DEFAULT_HOLD_MS, gapMs = DEFAULT_GAP_MS, rng = Math.random }) {
+  constructor({ pool, poolLabel = "", soundOn, soundOff, announce, onUpdate, holdMs = DEFAULT_HOLD_MS, gapMs = DEFAULT_GAP_MS, rng = Math.random }) {
     this.pool = pool;
+    this.poolLabel = poolLabel;
     this.soundOn = soundOn;
     this.soundOff = soundOff;
     this.announce = announce;
@@ -32,6 +33,23 @@ export class SimonMode {
     this.phase = "idle"; // idle | playing | awaiting | correct | wrong
     this.best = 0;
     this.round = 0; // bumped on newGame() so a stale timer from a previous game can't fire
+  }
+
+  // Switches which notes rounds are drawn from (chromatic, black keys, or a
+  // particular key). Ends whatever round is in progress rather than trying
+  // to carry it over, since a sequence already sung from the old pool can't
+  // be judged fairly against the new one; a fresh best-so-far for the new
+  // pool starts at zero rather than carrying over the old pool's score,
+  // since different pools aren't the same difficulty.
+  setPool(pool, poolLabel) {
+    this.round += 1;
+    this.pool = pool;
+    this.poolLabel = poolLabel;
+    this.sequence = [];
+    this.answer = [];
+    this.phase = "idle";
+    this.best = 0;
+    this.onUpdate({ best: 0, length: 0 });
   }
 
   // Starts fresh, at one note, rather than continuing whatever came before.

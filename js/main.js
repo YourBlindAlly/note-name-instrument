@@ -1,8 +1,9 @@
-import { spokenName } from "./notes.js";
+import { spokenName, pitchClassName } from "./notes.js";
 import { loadBank } from "./sampleBank.js";
 import { Instrument } from "./voice.js";
 import { MidiInput, ComputerKeyboardInput } from "./input.js";
 import { SimonMode } from "./simonMode.js";
+import { buildPool } from "./simon.js";
 
 const $ = (id) => document.getElementById(id);
 const statusEl = $("status");
@@ -13,6 +14,10 @@ const playArea = $("play-area");
 const simonPanel = $("simon-panel");
 const simonStatusEl = $("simon-status");
 const simonBestEl = $("simon-best");
+const poolChromaticRadio = $("pool-chromatic");
+const poolBlackKeysRadio = $("pool-black-keys");
+const poolKeyRadio = $("pool-key");
+const keyTonicSelect = $("simon-key-tonic");
 
 // Everything the player can change. `transposition` has no UI yet; it is here
 // so transposing instruments can be added later without restructuring.
@@ -20,6 +25,7 @@ const settings = { useFlats: false, transposition: 0, announceNotes: false, mode
 
 let instrument = null;
 let simon = null;
+let noteRange = null; // { minMidi, maxMidi }, set once the sample bank loads
 let midiDevices = [];
 let midiState = "pending"; // pending | ok | unsupported | denied
 
@@ -96,6 +102,45 @@ function noteOn(rawNote) {
   }
 }
 
+// The key tonic dropdown's labels follow the same sharps-or-flats setting
+// as everything else sung -- there's no separate per-key spelling
+// convention here (see docs/DECISIONS.md on why the app doesn't try to
+// infer spelling from context).
+function populateKeyTonicOptions() {
+  const previous = keyTonicSelect.value;
+  keyTonicSelect.textContent = "";
+  for (let pc = 0; pc < 12; pc++) {
+    const option = document.createElement("option");
+    option.value = String(pc);
+    option.textContent = pitchClassName(pc, settings.useFlats);
+    keyTonicSelect.appendChild(option);
+  }
+  keyTonicSelect.value = previous || "0";
+}
+
+// Reads the Note pool controls and applies the choice to the running Simon
+// Plays game, if one exists yet. Called on every relevant control change,
+// and once after Start finishes loading so a selection made before Start
+// was pressed still takes effect.
+function applyPoolSelection() {
+  if (!simon || !noteRange) return;
+  let pool, label;
+  if (poolBlackKeysRadio.checked) {
+    pool = buildPool(noteRange, "blackKeys");
+    label = "Black keys only";
+  } else if (poolKeyRadio.checked) {
+    const tonicPitchClass = Number(keyTonicSelect.value);
+    pool = buildPool(noteRange, "key", { tonicPitchClass });
+    label = `${pitchClassName(tonicPitchClass, settings.useFlats)} major`;
+  } else {
+    pool = buildPool(noteRange, "chromatic");
+    label = "Chromatic";
+  }
+  simon.setPool(pool, label);
+  simonBestEl.textContent = "0";
+  announceSimon(`${label}. Press New game to start.`);
+}
+
 function noteOff(rawNote) {
   if (!instrument) return;
   // Always forward the release, regardless of mode: Instrument.noteOff is a
@@ -114,10 +159,10 @@ async function start() {
     const bank = await loadBank(ctx);
     instrument = new Instrument(ctx, bank);
 
-    const pool = [];
-    for (let m = bank.minMidi; m <= bank.maxMidi; m++) pool.push(m);
+    noteRange = { minMidi: bank.minMidi, maxMidi: bank.maxMidi };
     simon = new SimonMode({
-      pool,
+      pool: buildPool(noteRange, "chromatic"),
+      poolLabel: "Chromatic",
       soundOn,
       soundOff,
       announce: announceSimon,
@@ -125,6 +170,7 @@ async function start() {
         simonBestEl.textContent = String(best);
       },
     });
+    applyPoolSelection(); // in case a pool choice was made before Start was pressed
 
     startButton.textContent = "Started";
     announce("Ready. Play a note. Focus is on the playing area.");
@@ -139,10 +185,12 @@ startButton.addEventListener("click", start);
 
 $("spelling-sharps").addEventListener("change", () => {
   settings.useFlats = false;
+  populateKeyTonicOptions();
   announce("Black keys will be sung as sharps.");
 });
 $("spelling-flats").addEventListener("change", () => {
   settings.useFlats = true;
+  populateKeyTonicOptions();
   announce("Black keys will be sung as flats.");
 });
 $("announce-notes").addEventListener("change", (event) => {
@@ -161,6 +209,16 @@ $("mode-simon").addEventListener("change", () => {
   announce("Simon Plays mode. Press New game to start.");
 });
 
+for (const radio of [poolChromaticRadio, poolBlackKeysRadio, poolKeyRadio]) {
+  radio.addEventListener("change", () => {
+    keyTonicSelect.disabled = !poolKeyRadio.checked;
+    applyPoolSelection();
+  });
+}
+keyTonicSelect.addEventListener("change", () => {
+  if (poolKeyRadio.checked) applyPoolSelection();
+});
+
 $("simon-new-game").addEventListener("click", () => {
   if (!simon) {
     announce("Press the Start button first.");
@@ -175,6 +233,8 @@ $("simon-replay").addEventListener("click", () => {
   }
   simon.replay();
 });
+
+populateKeyTonicOptions();
 
 keyboard.start();
 midi.start().then((result) => {

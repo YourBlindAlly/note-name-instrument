@@ -105,15 +105,35 @@ and a correct answer grows the sequence by one note and repeats, the usual
 Simon pattern. Drills pitch-to-key specifically: the prompt is only the
 sung pitch, not a name shown or spoken outside the song itself, and the
 player's job is to find that pitch on the keyboard; free play (holding a
-key to hear its name) remains the way to learn name-to-key. Notes are drawn
-from the full recorded range (currently F sharp 2 to C4) with equal
-probability, skipping an immediate repeat of the previous note so two sung
-copies of the same pitch in a row aren't mistaken for one held note. A miss
-does not end the game or shrink the sequence: it says "Not quite, listen
-again," replays the same sequence unchanged, and waits for another attempt,
-since the point is learning, not elimination. Timing (currently a note held
+key to hear its name) remains the way to learn name-to-key. A miss does not
+end the game or shrink the sequence: it says "Not quite, listen again,"
+replays the same sequence unchanged, and waits for another attempt, since
+the point is learning, not elimination. Timing (currently a note held
 650ms with a 500ms gap before the next) is a first guess, not yet confirmed
 by ear; see "still open" below.
+
+Simon Plays draws its notes from one of three selectable pools, changeable
+any time (changing it ends whatever round is in progress and resets the
+best-so-far for that pool back to zero, since a sequence sung from the old
+pool can't be judged against the new one, and different pools aren't the
+same difficulty):
+
+    Chromatic: the original and default. Every recorded note, equal
+    probability, skipping an immediate repeat as above.
+
+    Black keys only: same, restricted to the black keys in the recorded
+    range (currently 8 notes: F#/G flat 2, G#/A flat 2, A#/B flat 2,
+    C#/D flat 3, D#/E flat 3, F#/G flat 3, G#/A flat 3, A#/B flat 3).
+
+    A specific key: restricted to the seven notes of a major scale for a
+    chosen tonic (any of the 12 pitch classes), filtered to the recorded
+    range. Major only for now; minor or other modes are a later addition
+    if wanted. The tonic dropdown's labels follow the app's existing
+    sharps-or-flats setting, the same as everywhere else; there's no
+    separate per-key spelling convention (an F# major dropdown entry
+    doesn't force sharp spelling elsewhere, for example) since the app
+    deliberately doesn't try to infer spelling from context (see the black
+    keys note above).
 
 ## Still open
 
