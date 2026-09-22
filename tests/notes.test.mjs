@@ -36,27 +36,16 @@ test("A4 is 440 Hz and middle C is about 261.63 Hz", () => {
   assert.ok(Math.abs(midiToHz(60) - 261.63) < 0.01);
 });
 
-test("in-range notes use their own sample unshifted", () => {
-  assert.deepEqual(resolvePlayback(50, range, { useFlats: false }), { kind: "sample", key: "D3", rate: 1, shift: 0 });
+test("in-range notes use their own sample", () => {
+  assert.deepEqual(resolvePlayback(50, range, { useFlats: false }), { kind: "sample", key: "D3" });
+  assert.deepEqual(resolvePlayback(42, range), { kind: "sample", key: "Fsharp2" });
+  assert.deepEqual(resolvePlayback(60, range), { kind: "sample", key: "C4" });
 });
 
-test("up to two semitones outside the range shifts the edge sample", () => {
-  const up = resolvePlayback(62, range);
-  assert.equal(up.kind, "sample");
-  assert.equal(up.key, "C4");
-  assert.equal(up.shift, 2);
-  assert.ok(Math.abs(up.rate - 2 ** (2 / 12)) < 1e-12);
-
-  const down = resolvePlayback(41, range, { useFlats: true });
-  assert.equal(down.key, "Gflat2");
-  assert.equal(down.shift, -1);
-  assert.ok(down.rate < 1);
-});
-
-test("three or more semitones outside the range beeps at the true pitch", () => {
-  const high = resolvePlayback(63, range);
+test("any note outside the range beeps at the true pitch", () => {
+  const high = resolvePlayback(61, range);
   assert.equal(high.kind, "beep");
-  assert.ok(Math.abs(high.hz - midiToHz(63)) < 1e-9);
-  assert.equal(resolvePlayback(39, range).kind, "beep");
-  assert.equal(resolvePlayback(40, range).kind, "sample");
+  assert.ok(Math.abs(high.hz - midiToHz(61)) < 1e-9);
+  assert.equal(resolvePlayback(41, range).kind, "beep");
+  assert.equal(resolvePlayback(20, range).kind, "beep");
 });

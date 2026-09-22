@@ -39,10 +39,10 @@ W E T Y U O P are black keys, Z and X change octave.
 
 - Monophonic. A new note cuts the previous one with a few milliseconds of fade.
 - Black keys are sung as sharps or flats depending on a setting (default sharps).
-- A note up to two semitones outside the recorded range plays the nearest sample
-  shifted, as a placeholder that sings the wrong name, and says so in the status
-  message. Anything farther out plays a short beep at the true pitch. More
-  recordings are the real fix.
+- A note outside the recorded range plays a short beep at its true pitch,
+  rather than a pitch-shifted sample (tried and dropped: it sang the wrong
+  note name, which defeats the point). More recordings are the real fix for
+  the range itself.
 - Status messages go to a polite live region. Each note's name is not announced
   by the screen reader by default, since it would talk over the sung name; there
   is a checkbox to turn that on.

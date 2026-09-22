@@ -66,16 +66,8 @@ function noteOn(rawNote) {
     return;
   }
   const note = rawNote + settings.transposition;
-  const plan = instrument.noteOn(note, settings.useFlats);
-  const name = spokenName(note, settings.useFlats);
-  nowEl.textContent = name;
-  if (plan.kind === "beep") {
-    announce(`${name} is outside the recorded range. Playing a beep.`);
-  } else if (plan.shift !== 0) {
-    const direction = plan.shift > 0 ? "up" : "down";
-    const count = Math.abs(plan.shift);
-    announce(`${name} is outside the recorded range. Placeholder: ${plan.key} shifted ${direction} ${count} semitone${count > 1 ? "s" : ""}.`);
-  }
+  instrument.noteOn(note, settings.useFlats);
+  nowEl.textContent = spokenName(note, settings.useFlats);
 }
 
 function noteOff(rawNote) {

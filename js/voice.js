@@ -19,7 +19,7 @@ export class Instrument {
     this.out.connect(ctx.destination);
   }
 
-  // Returns the playback plan so the caller can report shifts and beeps.
+  // Returns the playback plan so the caller can report a beep vs. a sample.
   noteOn(midi, useFlats) {
     const plan = resolvePlayback(midi, this.bank, { useFlats });
     this.cutCurrent();
@@ -32,7 +32,6 @@ export class Instrument {
       const sample = this.bank.samples.get(plan.key);
       source = this.ctx.createBufferSource();
       source.buffer = sample.buffer;
-      source.playbackRate.value = plan.rate;
       source.loop = true;
       source.loopStart = sample.loopStart;
       source.loopEnd = sample.loopEnd;

@@ -48,19 +48,15 @@ export function midiToHz(midi, a4 = 440) {
 }
 
 // Decide how to sound `midi` given the recorded range { minMidi, maxMidi }.
-//   In range:            play that note's own sample.
-//   Within maxShift:     PLACEHOLDER. Pitch-shift the nearest edge sample. It
-//                        sings the wrong name; the real fix is more recordings.
-//   Farther out:         a plain beep at the true pitch.
-export function resolvePlayback(midi, range, { useFlats = false, maxShift = 2 } = {}) {
+//   In range:     play that note's own sample.
+//   Out of range: a plain beep at the true pitch. A pitch-shifted nearby
+//                 sample was tried as a placeholder here but sings the wrong
+//                 note name, which defeats the point of the app, so it was
+//                 dropped; the beep at least doesn't lie about the pitch.
+export function resolvePlayback(midi, range, { useFlats = false } = {}) {
   const { minMidi, maxMidi } = range;
   if (midi >= minMidi && midi <= maxMidi) {
-    return { kind: "sample", key: sampleKey(midi, useFlats), rate: 1, shift: 0 };
-  }
-  const edge = midi < minMidi ? minMidi : maxMidi;
-  const shift = midi - edge;
-  if (Math.abs(shift) <= maxShift) {
-    return { kind: "sample", key: sampleKey(edge, useFlats), rate: 2 ** (shift / 12), shift };
+    return { kind: "sample", key: sampleKey(midi, useFlats) };
   }
   return { kind: "beep", hz: midiToHz(midi) };
 }
