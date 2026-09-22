@@ -108,8 +108,13 @@ player's job is to find that pitch on the keyboard; free play (holding a
 key to hear its name) remains the way to learn name-to-key. A miss does not
 end the game or shrink the sequence: it says "Not quite, listen again,"
 replays the same sequence unchanged, and waits for another attempt, since
-the point is learning, not elimination. Timing (currently a note held
-650ms with a 500ms gap before the next) is a first guess, not yet confirmed
+the point is learning, not elimination. Escape, Space, or a Stop button
+halt everything immediately (cutting off a note mid-sing if one is
+sounding) and return to idle without otherwise changing anything -- added
+after it turned out there was no way to stop a round once started, other
+than waiting it out. Space is skipped when a button has focus, since Space
+is already that button's own native activate key. Timing (currently a note
+held 650ms with a 500ms gap before the next) is a first guess, not yet confirmed
 by ear; see "still open" below.
 
 Simon Plays draws its notes from one of four selectable pools, changeable

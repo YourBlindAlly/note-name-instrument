@@ -17,11 +17,12 @@ const DEFAULT_GAP_MS = 500;
 const PAUSE_MS = 1300;
 
 export class SimonMode {
-  constructor({ pool, poolLabel = "", soundOn, soundOff, announce, onUpdate, holdMs = DEFAULT_HOLD_MS, gapMs = DEFAULT_GAP_MS, rng = Math.random }) {
+  constructor({ pool, poolLabel = "", soundOn, soundOff, hardStop, announce, onUpdate, holdMs = DEFAULT_HOLD_MS, gapMs = DEFAULT_GAP_MS, rng = Math.random }) {
     this.pool = pool;
     this.poolLabel = poolLabel;
     this.soundOn = soundOn;
     this.soundOff = soundOff;
+    this.hardStop = hardStop || (() => {});
     this.announce = announce;
     this.onUpdate = onUpdate || (() => {});
     this.holdMs = holdMs;
@@ -50,6 +51,21 @@ export class SimonMode {
     this.phase = "idle";
     this.best = 0;
     this.onUpdate({ best: 0, length: 0 });
+  }
+
+  // Halts everything right away: cancels a sequence mid-playback (and
+  // silences whatever note it was singing), cancels the pause between
+  // rounds, and returns to idle. Doesn't touch the pool or the best-so-far,
+  // since stopping isn't the same as abandoning the game -- New game or
+  // Replay sequence both still work afterward.
+  stop() {
+    const wasActive = this.phase !== "idle";
+    this.round += 1; // invalidates any pending timer or in-flight playback loop
+    this.hardStop();
+    this.sequence = [];
+    this.answer = [];
+    this.phase = "idle";
+    this.announce(wasActive ? "Stopped. Press New game to start." : "Nothing to stop.");
   }
 
   // Starts fresh, at one note, rather than continuing whatever came before.

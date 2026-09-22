@@ -60,5 +60,10 @@ W E T Y U O P are black keys, Z and X change octave.
   key (a major scale for a chosen tonic, restricted to the recorded range).
   Changing the pool ends whatever round is running and resets that pool's
   best-so-far to zero.
+- Simon Plays can be stopped at any time with Escape, Space, or the Stop
+  button, whether it's mid-playback or waiting on you. This cuts off a
+  singing note immediately if one's sounding and returns to idle; nothing
+  else (best-so-far, pool choice) changes. Space is ignored when a button
+  has focus, since Space is already that button's own activate key.
 
 See docs/SPEC.md and docs/DECISIONS.md for the full reasoning.

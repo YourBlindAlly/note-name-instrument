@@ -169,6 +169,7 @@ async function start() {
       poolLabel: "White keys only",
       soundOn,
       soundOff,
+      hardStop: () => instrument.cutCurrent(),
       announce: announceSimon,
       onUpdate: ({ best }) => {
         simonBestEl.textContent = String(best);
@@ -236,6 +237,29 @@ $("simon-replay").addEventListener("click", () => {
     return;
   }
   simon.replay();
+});
+$("simon-stop").addEventListener("click", () => {
+  if (!simon) {
+    announce("Press the Start button first.");
+    return;
+  }
+  simon.stop();
+});
+
+// Escape or Space stops Simon Plays from anywhere on the page, not just the
+// Stop button -- this was hard to discover otherwise. Space is left alone
+// when a button has focus, since it's already that button's native activate
+// key (so, for example, Space on a focused New game button starts a new
+// game rather than immediately stopping it); Escape has no such conflict.
+document.addEventListener("keydown", (event) => {
+  if (settings.mode !== "simon" || !simon) return;
+  const tag = event.target && event.target.tagName;
+  if (tag === "INPUT" || tag === "SELECT" || tag === "TEXTAREA") return;
+  const isStopKey = event.key === "Escape" || event.key === " " || event.code === "Space";
+  if (!isStopKey) return;
+  if (event.key !== "Escape" && tag === "BUTTON") return;
+  event.preventDefault();
+  simon.stop();
 });
 
 populateKeyTonicOptions();
