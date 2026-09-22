@@ -1,0 +1,600 @@
+{
+ "sample_rate": 44100,
+ "note": "loop points are sample indexes into each wav",
+ "samples": {
+  "Fsharp2": {
+   "source_take": 1,
+   "pitch": "F#2",
+   "measured_cents_before": -7.0,
+   "target_hz": 92.5,
+   "steady": {
+    "loop_start_sample": 38907,
+    "loop_end_sample": 50349,
+    "loop_seam_match": 0.971,
+    "cents_after": -0.1,
+    "wobble_std_cents": 1.0,
+    "length_seconds": 2.56
+   },
+   "natural": {
+    "loop_start_sample": 49226,
+    "loop_end_sample": 75881,
+    "loop_seam_match": 0.825,
+    "cents_after": 0.5,
+    "wobble_std_cents": 19.8,
+    "length_seconds": 2.56
+   }
+  },
+  "G2": {
+   "source_take": 3,
+   "pitch": "G2",
+   "measured_cents_before": -2.2,
+   "target_hz": 98.0,
+   "steady": {
+    "loop_start_sample": 36172,
+    "loop_end_sample": 55071,
+    "loop_seam_match": 0.993,
+    "cents_after": -0.1,
+    "wobble_std_cents": 0.8,
+    "length_seconds": 2.52
+   },
+   "natural": {
+    "loop_start_sample": 32441,
+    "loop_end_sample": 59049,
+    "loop_seam_match": 0.981,
+    "cents_after": -4.2,
+    "wobble_std_cents": 23.3,
+    "length_seconds": 2.52
+   }
+  },
+  "Gsharp2": {
+   "source_take": 6,
+   "pitch": "G#2",
+   "measured_cents_before": -5.1,
+   "target_hz": 103.83,
+   "steady": {
+    "loop_start_sample": 43039,
+    "loop_end_sample": 54083,
+    "loop_seam_match": 0.976,
+    "cents_after": -0.0,
+    "wobble_std_cents": 1.2,
+    "length_seconds": 2.21
+   },
+   "natural": {
+    "loop_start_sample": 45592,
+    "loop_end_sample": 73994,
+    "loop_seam_match": 0.863,
+    "cents_after": 5.4,
+    "wobble_std_cents": 17.1,
+    "length_seconds": 2.21
+   }
+  },
+  "Asharp2": {
+   "source_take": 10,
+   "pitch": "A#2",
+   "measured_cents_before": -5.5,
+   "target_hz": 116.54,
+   "steady": {
+    "loop_start_sample": 34497,
+    "loop_end_sample": 45850,
+    "loop_seam_match": 0.971,
+    "cents_after": -0.1,
+    "wobble_std_cents": 0.8,
+    "length_seconds": 2.36
+   },
+   "natural": {
+    "loop_start_sample": 44181,
+    "loop_end_sample": 70674,
+    "loop_seam_match": 0.911,
+    "cents_after": 0.2,
+    "wobble_std_cents": 11.3,
+    "length_seconds": 2.36
+   }
+  },
+  "B2": {
+   "source_take": 11,
+   "pitch": "B2",
+   "measured_cents_before": -2.5,
+   "target_hz": 123.47,
+   "steady": {
+    "loop_start_sample": 28441,
+    "loop_end_sample": 39510,
+    "loop_seam_match": 0.997,
+    "cents_after": 0.2,
+    "wobble_std_cents": 1.1,
+    "length_seconds": 2.59
+   },
+   "natural": {
+    "loop_start_sample": 33111,
+    "loop_end_sample": 59792,
+    "loop_seam_match": 0.992,
+    "cents_after": 5.1,
+    "wobble_std_cents": 16.6,
+    "length_seconds": 2.59
+   }
+  },
+  "C3": {
+   "source_take": 13,
+   "pitch": "C3",
+   "measured_cents_before": 1.3,
+   "target_hz": 130.81,
+   "steady": {
+    "loop_start_sample": 48538,
+    "loop_end_sample": 59663,
+    "loop_seam_match": 0.995,
+    "cents_after": 0.2,
+    "wobble_std_cents": 0.9,
+    "length_seconds": 3.48
+   },
+   "natural": {
+    "loop_start_sample": 42161,
+    "loop_end_sample": 69559,
+    "loop_seam_match": 0.985,
+    "cents_after": -0.8,
+    "wobble_std_cents": 20.5,
+    "length_seconds": 3.48
+   }
+  },
+  "Csharp3": {
+   "source_take": 16,
+   "pitch": "C#3",
+   "measured_cents_before": -24.3,
+   "target_hz": 138.59,
+   "steady": {
+    "loop_start_sample": 42787,
+    "loop_end_sample": 53924,
+    "loop_seam_match": 0.978,
+    "cents_after": 0.0,
+    "wobble_std_cents": 1.0,
+    "length_seconds": 2.42
+   },
+   "natural": {
+    "loop_start_sample": 45565,
+    "loop_end_sample": 72319,
+    "loop_seam_match": 0.942,
+    "cents_after": 3.1,
+    "wobble_std_cents": 18.5,
+    "length_seconds": 2.42
+   }
+  },
+  "D3": {
+   "source_take": 17,
+   "pitch": "D3",
+   "measured_cents_before": -3.8,
+   "target_hz": 146.83,
+   "steady": {
+    "loop_start_sample": 21160,
+    "loop_end_sample": 32572,
+    "loop_seam_match": 0.997,
+    "cents_after": 0.0,
+    "wobble_std_cents": 0.7,
+    "length_seconds": 3.16
+   },
+   "natural": {
+    "loop_start_sample": 44551,
+    "loop_end_sample": 84156,
+    "loop_seam_match": 0.994,
+    "cents_after": 4.7,
+    "wobble_std_cents": 21.9,
+    "length_seconds": 3.16
+   }
+  },
+  "Dsharp3": {
+   "source_take": 20,
+   "pitch": "D#3",
+   "measured_cents_before": -33.8,
+   "target_hz": 155.56,
+   "steady": {
+    "loop_start_sample": 36498,
+    "loop_end_sample": 47554,
+    "loop_seam_match": 0.984,
+    "cents_after": 0.1,
+    "wobble_std_cents": 0.7,
+    "length_seconds": 2.25
+   },
+   "natural": {
+    "loop_start_sample": 38721,
+    "loop_end_sample": 65465,
+    "loop_seam_match": 0.928,
+    "cents_after": -2.0,
+    "wobble_std_cents": 16.6,
+    "length_seconds": 2.25
+   }
+  },
+  "Fsharp3": {
+   "source_take": 26,
+   "pitch": "F#3",
+   "measured_cents_before": -38.0,
+   "target_hz": 185.0,
+   "steady": {
+    "loop_start_sample": 30307,
+    "loop_end_sample": 41511,
+    "loop_seam_match": 0.992,
+    "cents_after": 0.1,
+    "wobble_std_cents": 0.5,
+    "length_seconds": 2.19
+   },
+   "natural": {
+    "loop_start_sample": 30307,
+    "loop_end_sample": 57177,
+    "loop_seam_match": 0.926,
+    "cents_after": 3.9,
+    "wobble_std_cents": 14.4,
+    "length_seconds": 2.19
+   }
+  },
+  "Gsharp3": {
+   "source_take": 30,
+   "pitch": "G#3",
+   "measured_cents_before": -29.5,
+   "target_hz": 207.65,
+   "steady": {
+    "loop_start_sample": 32953,
+    "loop_end_sample": 43996,
+    "loop_seam_match": 0.986,
+    "cents_after": 0.0,
+    "wobble_std_cents": 0.7,
+    "length_seconds": 2.21
+   },
+   "natural": {
+    "loop_start_sample": 32953,
+    "loop_end_sample": 61969,
+    "loop_seam_match": 0.926,
+    "cents_after": 2.6,
+    "wobble_std_cents": 13.2,
+    "length_seconds": 2.21
+   }
+  },
+  "Asharp3": {
+   "source_take": 33,
+   "pitch": "A#3",
+   "measured_cents_before": -13.5,
+   "target_hz": 233.08,
+   "steady": {
+    "loop_start_sample": 38214,
+    "loop_end_sample": 49377,
+    "loop_seam_match": 0.98,
+    "cents_after": 0.0,
+    "wobble_std_cents": 0.7,
+    "length_seconds": 2.18
+   },
+   "natural": {
+    "loop_start_sample": 38214,
+    "loop_end_sample": 64713,
+    "loop_seam_match": 0.804,
+    "cents_after": -0.4,
+    "wobble_std_cents": 10.5,
+    "length_seconds": 2.18
+   }
+  },
+  "C4": {
+   "source_take": 38,
+   "pitch": "C4",
+   "measured_cents_before": 5.8,
+   "target_hz": 261.63,
+   "steady": {
+    "loop_start_sample": 45309,
+    "loop_end_sample": 58794,
+    "loop_seam_match": 0.998,
+    "cents_after": 0.1,
+    "wobble_std_cents": 0.6,
+    "length_seconds": 3.24
+   },
+   "natural": {
+    "loop_start_sample": 33508,
+    "loop_end_sample": 61639,
+    "loop_seam_match": 0.992,
+    "cents_after": 1.6,
+    "wobble_std_cents": 9.8,
+    "length_seconds": 3.24
+   }
+  },
+  "B3": {
+   "source_take": 39,
+   "pitch": "B3",
+   "measured_cents_before": 7.6,
+   "target_hz": 246.94,
+   "steady": {
+    "loop_start_sample": 32132,
+    "loop_end_sample": 47482,
+    "loop_seam_match": 0.995,
+    "cents_after": 0.0,
+    "wobble_std_cents": 1.3,
+    "length_seconds": 3.2
+   },
+   "natural": {
+    "loop_start_sample": 32132,
+    "loop_end_sample": 58751,
+    "loop_seam_match": 0.99,
+    "cents_after": -3.4,
+    "wobble_std_cents": 12.0,
+    "length_seconds": 3.2
+   }
+  },
+  "Bflat3": {
+   "source_take": 42,
+   "pitch": "A#3",
+   "measured_cents_before": -6.0,
+   "target_hz": 233.08,
+   "steady": {
+    "loop_start_sample": 30969,
+    "loop_end_sample": 42134,
+    "loop_seam_match": 0.98,
+    "cents_after": -0.1,
+    "wobble_std_cents": 1.3,
+    "length_seconds": 2.02
+   },
+   "natural": {
+    "loop_start_sample": 30969,
+    "loop_end_sample": 57523,
+    "loop_seam_match": 0.808,
+    "cents_after": 1.0,
+    "wobble_std_cents": 11.3,
+    "length_seconds": 2.02
+   }
+  },
+  "A3": {
+   "source_take": 43,
+   "pitch": "A3",
+   "measured_cents_before": 3.4,
+   "target_hz": 220.0,
+   "steady": {
+    "loop_start_sample": 15313,
+    "loop_end_sample": 26341,
+    "loop_seam_match": 0.978,
+    "cents_after": -0.0,
+    "wobble_std_cents": 1.1,
+    "length_seconds": 2.43
+   },
+   "natural": {
+    "loop_start_sample": 34827,
+    "loop_end_sample": 61678,
+    "loop_seam_match": 0.848,
+    "cents_after": -0.9,
+    "wobble_std_cents": 14.3,
+    "length_seconds": 2.43
+   }
+  },
+  "Aflat3": {
+   "source_take": 46,
+   "pitch": "G#3",
+   "measured_cents_before": -25.5,
+   "target_hz": 207.65,
+   "steady": {
+    "loop_start_sample": 42787,
+    "loop_end_sample": 54044,
+    "loop_seam_match": 0.982,
+    "cents_after": 0.0,
+    "wobble_std_cents": 1.0,
+    "length_seconds": 2.16
+   },
+   "natural": {
+    "loop_start_sample": 31410,
+    "loop_end_sample": 58037,
+    "loop_seam_match": 0.9,
+    "cents_after": 4.5,
+    "wobble_std_cents": 13.3,
+    "length_seconds": 2.16
+   }
+  },
+  "G3": {
+   "source_take": 47,
+   "pitch": "G3",
+   "measured_cents_before": 1.7,
+   "target_hz": 196.0,
+   "steady": {
+    "loop_start_sample": 25808,
+    "loop_end_sample": 37285,
+    "loop_seam_match": 0.997,
+    "cents_after": 0.1,
+    "wobble_std_cents": 0.7,
+    "length_seconds": 2.63
+   },
+   "natural": {
+    "loop_start_sample": 25808,
+    "loop_end_sample": 54516,
+    "loop_seam_match": 0.991,
+    "cents_after": -3.3,
+    "wobble_std_cents": 13.5,
+    "length_seconds": 2.63
+   }
+  },
+  "Gflat3": {
+   "source_take": 49,
+   "pitch": "F#3",
+   "measured_cents_before": -39.2,
+   "target_hz": 185.0,
+   "steady": {
+    "loop_start_sample": 37478,
+    "loop_end_sample": 49159,
+    "loop_seam_match": 0.982,
+    "cents_after": -0.0,
+    "wobble_std_cents": 1.1,
+    "length_seconds": 2.2
+   },
+   "natural": {
+    "loop_start_sample": 45257,
+    "loop_end_sample": 74925,
+    "loop_seam_match": 0.939,
+    "cents_after": 4.8,
+    "wobble_std_cents": 15.8,
+    "length_seconds": 2.2
+   }
+  },
+  "F3": {
+   "source_take": 52,
+   "pitch": "F3",
+   "measured_cents_before": 0.3,
+   "target_hz": 174.61,
+   "steady": {
+    "loop_start_sample": 24679,
+    "loop_end_sample": 36044,
+    "loop_seam_match": 0.989,
+    "cents_after": 0.1,
+    "wobble_std_cents": 0.6,
+    "length_seconds": 1.59
+   },
+   "natural": {
+    "loop_start_sample": 18646,
+    "loop_end_sample": 45120,
+    "loop_seam_match": 0.96,
+    "cents_after": 1.6,
+    "wobble_std_cents": 10.7,
+    "length_seconds": 1.59
+   }
+  },
+  "E3": {
+   "source_take": 54,
+   "pitch": "E3",
+   "measured_cents_before": 2.8,
+   "target_hz": 164.81,
+   "steady": {
+    "loop_start_sample": 29778,
+    "loop_end_sample": 44493,
+    "loop_seam_match": 0.996,
+    "cents_after": 0.2,
+    "wobble_std_cents": 1.0,
+    "length_seconds": 1.96
+   },
+   "natural": {
+    "loop_start_sample": 23904,
+    "loop_end_sample": 50498,
+    "loop_seam_match": 0.972,
+    "cents_after": 2.3,
+    "wobble_std_cents": 20.3,
+    "length_seconds": 1.96
+   }
+  },
+  "Eflat3": {
+   "source_take": 56,
+   "pitch": "D#3",
+   "measured_cents_before": -32.2,
+   "target_hz": 155.56,
+   "steady": {
+    "loop_start_sample": 42822,
+    "loop_end_sample": 54447,
+    "loop_seam_match": 0.977,
+    "cents_after": -0.0,
+    "wobble_std_cents": 0.8,
+    "length_seconds": 2.34
+   },
+   "natural": {
+    "loop_start_sample": 42822,
+    "loop_end_sample": 76101,
+    "loop_seam_match": 0.946,
+    "cents_after": 0.2,
+    "wobble_std_cents": 16.9,
+    "length_seconds": 2.34
+   }
+  },
+  "Dflat3": {
+   "source_take": 60,
+   "pitch": "C#3",
+   "measured_cents_before": -3.7,
+   "target_hz": 138.59,
+   "steady": {
+    "loop_start_sample": 32292,
+    "loop_end_sample": 43427,
+    "loop_seam_match": 0.986,
+    "cents_after": 0.0,
+    "wobble_std_cents": 0.9,
+    "length_seconds": 2.22
+   },
+   "natural": {
+    "loop_start_sample": 34633,
+    "loop_end_sample": 61359,
+    "loop_seam_match": 0.938,
+    "cents_after": 0.9,
+    "wobble_std_cents": 14.1,
+    "length_seconds": 2.22
+   }
+  },
+  "Bflat2": {
+   "source_take": 66,
+   "pitch": "A#2",
+   "measured_cents_before": -7.5,
+   "target_hz": 116.54,
+   "steady": {
+    "loop_start_sample": 46139,
+    "loop_end_sample": 57491,
+    "loop_seam_match": 0.988,
+    "cents_after": -0.1,
+    "wobble_std_cents": 0.7,
+    "length_seconds": 2.41
+   },
+   "natural": {
+    "loop_start_sample": 43546,
+    "loop_end_sample": 74523,
+    "loop_seam_match": 0.947,
+    "cents_after": 0.9,
+    "wobble_std_cents": 17.2,
+    "length_seconds": 2.41
+   }
+  },
+  "A2": {
+   "source_take": 67,
+   "pitch": "A2",
+   "measured_cents_before": 1.8,
+   "target_hz": 110.0,
+   "steady": {
+    "loop_start_sample": 38002,
+    "loop_end_sample": 52435,
+    "loop_seam_match": 0.977,
+    "cents_after": -0.1,
+    "wobble_std_cents": 1.0,
+    "length_seconds": 2.68
+   },
+   "natural": {
+    "loop_start_sample": 38002,
+    "loop_end_sample": 65756,
+    "loop_seam_match": 0.954,
+    "cents_after": -7.9,
+    "wobble_std_cents": 24.0,
+    "length_seconds": 2.68
+   }
+  },
+  "Aflat2": {
+   "source_take": 69,
+   "pitch": "G#2",
+   "measured_cents_before": -26.1,
+   "target_hz": 103.83,
+   "steady": {
+    "loop_start_sample": 43766,
+    "loop_end_sample": 55236,
+    "loop_seam_match": 0.992,
+    "cents_after": -0.0,
+    "wobble_std_cents": 0.9,
+    "length_seconds": 2.65
+   },
+   "natural": {
+    "loop_start_sample": 50169,
+    "loop_end_sample": 80328,
+    "loop_seam_match": 0.963,
+    "cents_after": -3.8,
+    "wobble_std_cents": 16.9,
+    "length_seconds": 2.65
+   }
+  },
+  "Gflat2": {
+   "source_take": 73,
+   "pitch": "F#2",
+   "measured_cents_before": -17.4,
+   "target_hz": 92.5,
+   "steady": {
+    "loop_start_sample": 40207,
+    "loop_end_sample": 51644,
+    "loop_seam_match": 0.976,
+    "cents_after": -0.2,
+    "wobble_std_cents": 1.0,
+    "length_seconds": 2.39
+   },
+   "natural": {
+    "loop_start_sample": 37363,
+    "loop_end_sample": 63988,
+    "loop_seam_match": 0.952,
+    "cents_after": 2.3,
+    "wobble_std_cents": 27.9,
+    "length_seconds": 2.39
+   }
+  }
+ }
+}
