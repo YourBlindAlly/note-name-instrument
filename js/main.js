@@ -14,6 +14,7 @@ const playArea = $("play-area");
 const simonPanel = $("simon-panel");
 const simonStatusEl = $("simon-status");
 const simonBestEl = $("simon-best");
+const poolWhiteKeysRadio = $("pool-white-keys");
 const poolChromaticRadio = $("pool-chromatic");
 const poolBlackKeysRadio = $("pool-black-keys");
 const poolKeyRadio = $("pool-key");
@@ -128,13 +129,16 @@ function applyPoolSelection() {
   if (poolBlackKeysRadio.checked) {
     pool = buildPool(noteRange, "blackKeys");
     label = "Black keys only";
+  } else if (poolChromaticRadio.checked) {
+    pool = buildPool(noteRange, "chromatic");
+    label = "Chromatic";
   } else if (poolKeyRadio.checked) {
     const tonicPitchClass = Number(keyTonicSelect.value);
     pool = buildPool(noteRange, "key", { tonicPitchClass });
     label = `${pitchClassName(tonicPitchClass, settings.useFlats)} major`;
   } else {
-    pool = buildPool(noteRange, "chromatic");
-    label = "Chromatic";
+    pool = buildPool(noteRange, "whiteKeys");
+    label = "White keys only";
   }
   simon.setPool(pool, label);
   simonBestEl.textContent = "0";
@@ -161,8 +165,8 @@ async function start() {
 
     noteRange = { minMidi: bank.minMidi, maxMidi: bank.maxMidi };
     simon = new SimonMode({
-      pool: buildPool(noteRange, "chromatic"),
-      poolLabel: "Chromatic",
+      pool: buildPool(noteRange, "whiteKeys"),
+      poolLabel: "White keys only",
       soundOn,
       soundOff,
       announce: announceSimon,
@@ -209,7 +213,7 @@ $("mode-simon").addEventListener("change", () => {
   announce("Simon Plays mode. Press New game to start.");
 });
 
-for (const radio of [poolChromaticRadio, poolBlackKeysRadio, poolKeyRadio]) {
+for (const radio of [poolWhiteKeysRadio, poolChromaticRadio, poolBlackKeysRadio, poolKeyRadio]) {
   radio.addEventListener("change", () => {
     keyTonicSelect.disabled = !poolKeyRadio.checked;
     applyPoolSelection();

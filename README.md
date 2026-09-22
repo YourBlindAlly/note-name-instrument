@@ -55,10 +55,10 @@ W E T Y U O P are black keys, Z and X change octave.
   note. It has its own status region so game narration doesn't mix with device
   messages. The note pacing (a hold and a gap between notes) is a first guess,
   not yet confirmed by ear.
-- Simon Plays has three note pools, switchable any time: Chromatic (every
-  recorded note, the default), Black keys only, and A specific key (a major
-  scale for a chosen tonic, restricted to the recorded range). Changing the
-  pool ends whatever round is running and resets that pool's best-so-far to
-  zero.
+- Simon Plays has four note pools, switchable any time: White keys only (the
+  default), Chromatic (every recorded note), Black keys only, and A specific
+  key (a major scale for a chosen tonic, restricted to the recorded range).
+  Changing the pool ends whatever round is running and resets that pool's
+  best-so-far to zero.
 
 See docs/SPEC.md and docs/DECISIONS.md for the full reasoning.

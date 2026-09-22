@@ -112,18 +112,25 @@ the point is learning, not elimination. Timing (currently a note held
 650ms with a 500ms gap before the next) is a first guess, not yet confirmed
 by ear; see "still open" below.
 
-Simon Plays draws its notes from one of three selectable pools, changeable
+Simon Plays draws its notes from one of four selectable pools, changeable
 any time (changing it ends whatever round is in progress and resets the
 best-so-far for that pool back to zero, since a sequence sung from the old
 pool can't be judged against the new one, and different pools aren't the
 same difficulty):
 
-    Chromatic: the original and default. Every recorded note, equal
-    probability, skipping an immediate repeat as above.
+    White keys only: the default. Restricted to the white (natural) keys in
+    the recorded range (currently 11 notes: G2 through C4's naturals).
+    Chosen as the default over chromatic since it's the gentlest starting
+    point -- no black-key spelling question to think about while also
+    learning the game itself.
 
-    Black keys only: same, restricted to the black keys in the recorded
-    range (currently 8 notes: F#/G flat 2, G#/A flat 2, A#/B flat 2,
-    C#/D flat 3, D#/E flat 3, F#/G flat 3, G#/A flat 3, A#/B flat 3).
+    Chromatic: the original mode, and how the game worked before pools
+    existed. Every recorded note, equal probability, skipping an immediate
+    repeat as above.
+
+    Black keys only: restricted to the black keys in the recorded range
+    (currently 8 notes: F#/G flat 2, G#/A flat 2, A#/B flat 2, C#/D flat 3,
+    D#/E flat 3, F#/G flat 3, G#/A flat 3, A#/B flat 3).
 
     A specific key: restricted to the seven notes of a major scale for a
     chosen tonic (any of the 12 pitch classes), filtered to the recorded

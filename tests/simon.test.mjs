@@ -60,6 +60,14 @@ test("buildPool blackKeys is only the black keys in range", () => {
   assert.deepEqual(buildPool(range, "blackKeys"), [42, 44, 46, 49, 51, 54, 56, 58]);
 });
 
+test("buildPool whiteKeys is only the white keys in range, and the two are complementary", () => {
+  const whiteKeys = buildPool(range, "whiteKeys");
+  const blackKeys = buildPool(range, "blackKeys");
+  const chromatic = buildPool(range, "chromatic");
+  assert.deepEqual(whiteKeys, [43, 45, 47, 48, 50, 52, 53, 55, 57, 59, 60]);
+  assert.deepEqual([...whiteKeys, ...blackKeys].sort((a, b) => a - b), chromatic);
+});
+
 test("buildPool key returns only that major scale's notes in range", () => {
   // C major (tonic pitch class 0): naturals only.
   assert.deepEqual(buildPool(range, "key", { tonicPitchClass: 0 }), [43, 45, 47, 48, 50, 52, 53, 55, 57, 59, 60]);
