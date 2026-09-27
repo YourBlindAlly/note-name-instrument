@@ -145,6 +145,18 @@ pitch after the splice matched before it to within a few cents. This
 whole pass only touches samples/low_voice/steady, since that's the only
 set the app actually loads.
 
+Despite all of that measuring clean, Rusty reported hearing a small bump
+in the sound right before the tail after this shipped -- a real audible
+artifact the numeric checks above didn't catch, which is the limit of
+verifying a splice by measurement alone rather than by ear. Not chased
+down yet (deliberately set aside rather than re-recording over it). Best
+guess without further digging: something right at the join itself, either
+a small level mismatch between the raw audio and the very start of
+Praat's resynthesis, or an edge effect from the overlap-add reconstruction
+-- both are known soft spots of this technique. Add to the list of known
+rough edges below if this pack's cutting is ever revisited rather than
+just superseded by a re-recording.
+
 Simon Plays draws its notes from one of four selectable pools, changeable
 any time (changing it ends whatever round is in progress and resets the
 best-so-far for that pool back to zero, since a sequence sung from the old
