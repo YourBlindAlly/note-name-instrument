@@ -36,6 +36,7 @@ W E T Y U O P are black keys, Z and X change octave.
     samples/low_voice/          Rusty's recorded sample pack, F sharp 2 to C4
     docs/                       spec, decision log, sample pack format, how the pack was made
     tools/cutpack.py            script used to cut a raw recording into a pack (see docs)
+    tools/shorten_release.py    stopgap: shortens release tails without touching pitch (see docs)
     tests/                      run with: node --test tests/
 
 ## Behavior worth knowing
@@ -65,5 +66,10 @@ W E T Y U O P are black keys, Z and X change octave.
   singing note immediately if one's sounding and returns to idle; nothing
   else (best-so-far, pool choice) changes. Space is ignored when a button
   has focus, since Space is already that button's own activate key.
+- The release tails were originally much longer than intended for fast
+  playing (over a second on most notes). tools/shorten_release.py is a
+  stopgap that halves just the release portion of each steady sample,
+  pitch unaffected, until the pack is re-recorded with snappier endings.
+  See docs/DECISIONS.md for the numbers and how it was verified.
 
 See docs/SPEC.md and docs/DECISIONS.md for the full reasoning.

@@ -117,6 +117,34 @@ is already that button's own native activate key. Timing (currently a note
 held 650ms with a 500ms gap before the next) is a first guess, not yet confirmed
 by ear; see "still open" below.
 
+The release tails in the low-voice pack turned out to be much longer than
+intended for actual fast playing -- measured at a mean of 1.38 seconds and
+up to 2.42 seconds (D3) from loop end to file end, which is most of each
+file's total length. Traced to the cutting pipeline's own generosity: the
+loop region tends to end fairly early in the note, and the decay and
+consonant-burst searches (see SAMPLE_RECORDING_PROCESS.md steps 3-4) can
+each add several hundred milliseconds on top of whatever's left unlooped.
+The real fix is re-recording with a snappier, more deliberate cutoff on
+each note (planned); as a stopgap until that's done, tools/shorten_release.py
+time-compresses just the release portion of each steady file by a factor
+of 0.5 (roughly twice as fast), using Praat's duration tier the same way
+cutpack.py already uses its pitch tier, so pitch is unaffected. The attack
+and the looped sustain are left completely untouched -- loop_start_sample
+and loop_end_sample in loops.json don't change, only the audio after
+loop_end does. The join needed a longer, equal-power crossfade (25
+milliseconds, not the 6 used elsewhere in the pipeline) since Praat's
+resynthesis re-grids the waveform onto its own pitch-cycle boundaries and
+doesn't line up sample-for-sample with the raw audio it's spliced onto; a
+short linear crossfade wasn't enough to hide that at the lowest notes.
+Verified before shipping: every file's audio up to the crossfade start is
+byte-identical to the original, the splice's jump-size ratio (against a
+same-size window of ordinary clean audio elsewhere in the same file, not
+just an arbitrary threshold) came out at 0.66 to 1.23 across all 27 notes,
+meaning statistically indistinguishable from an unspliced join, and
+pitch after the splice matched before it to within a few cents. This
+whole pass only touches samples/low_voice/steady, since that's the only
+set the app actually loads.
+
 Simon Plays draws its notes from one of four selectable pools, changeable
 any time (changing it ends whatever round is in progress and resets the
 best-so-far for that pool back to zero, since a sequence sung from the old
